@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  body {
+    @apply bg-appbg text-ink-900 dark:bg-ink-900 dark:text-ink-50;
+    overscroll-behavior-y: none;
+  }
+  /* tabular numbers for prices */
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply backdrop-blur-xl bg-white/80 dark:bg-ink-900/80 border border-white/20 dark:border-ink-700/50;
+  }
+  .card {
+    @apply bg-white dark:bg-ink-800 rounded-2xl shadow-card border border-ink-100 dark:border-ink-700;
+  }
+  .skeleton {
+    background: linear-gradient(90deg, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%);
+    background-size: 1000px 100%;
+    @apply animate-shimmer rounded-lg;
+  }
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-600 to-primary-500 text-white font-semibold rounded-xl px-5 py-2.5 transition-all hover:shadow-glow hover:scale-105 active:scale-95;
+  }
+  .btn-ghost {
+    @apply bg-ink-100 dark:bg-ink-700 text-ink-700 dark:text-ink-200 font-medium rounded-xl px-4 py-2 transition-all hover:bg-ink-200 dark:hover:bg-ink-600;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium transition-all cursor-pointer;
+  }
+  .section-title {
+    @apply text-xl md:text-2xl font-bold font-heading text-ink-900 dark:text-ink-50;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .snap-row {
+    @apply flex gap-4 overflow-x-auto snap-x scrollbar-hide pb-2;
+  }
+  .snap-row > * {
+    @apply snap-start shrink-0;
+  }
+  .veg-dot {
+    @apply w-3.5 h-3.5 border-2 border-primary-600 flex items-center justify-center rounded-sm;
+  }
+  .veg-dot::after {
+    content: '';
+    @apply w-1.5 h-1.5 bg-primary-600 rounded-full;
+  }
+  .nonveg-dot {
+    @apply w-3.5 h-3.5 border-2 border-coral-500 flex items-center justify-center rounded-sm;
+  }
+  .nonveg-dot::after {
+    content: '';
+    @apply w-1.5 h-1.5 bg-coral-500 rounded-full;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-600 to-primary-500 bg-clip-text text-transparent;
+  }
+  .no-tap {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Custom scrollbar for modals/drawers */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+/* Hide number input arrows */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
